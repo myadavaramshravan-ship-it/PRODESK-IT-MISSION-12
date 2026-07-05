@@ -27,7 +27,6 @@ function App() {
       <div className="app-shell">
         <div className="auth-card">
           <h2>Welcome to the chat</h2>
-          <p>Pick a display name and jump into the conversation.</p>
 
           <div className="auth-form">
             <input
