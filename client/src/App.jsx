@@ -2,7 +2,6 @@ import { useState } from "react";
 import { io } from "socket.io-client";
 import Chat from "./Chat";
 
-// Render Backend URL
 const socket = io("https://prodesk-it-mission-12.onrender.com");
 
 function App() {
@@ -17,22 +16,32 @@ function App() {
     }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      joinChat();
+    }
+  };
+
   if (!joined) {
     return (
-      <div style={{ textAlign: "center", marginTop: "100px" }}>
-        <h2>Join Chat</h2>
+      <div className="app-shell">
+        <div className="auth-card">
+          <h2>Welcome to the chat</h2>
+          <p>Pick a display name and jump into the conversation.</p>
 
-        <input
-          type="text"
-          placeholder="Enter Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
+          <div className="auth-form">
+            <input
+              className="input"
+              type="text"
+              placeholder="Enter Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              onKeyDown={handleKeyDown}
+            />
 
-        <br />
-        <br />
-
-        <button onClick={joinChat}>Join</button>
+            <button onClick={joinChat}>Join Chat</button>
+          </div>
+        </div>
       </div>
     );
   }
