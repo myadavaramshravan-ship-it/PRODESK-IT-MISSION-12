@@ -2,13 +2,20 @@ import { useState } from "react";
 import { io } from "socket.io-client";
 import Chat from "./Chat";
 
-import { io } from "socket.io-client";
-
+// Render Backend URL
 const socket = io("https://prodesk-it-mission-12.onrender.com");
 
 function App() {
   const [username, setUsername] = useState("");
   const [joined, setJoined] = useState(false);
+
+  const joinChat = () => {
+    if (username.trim() !== "") {
+      setJoined(true);
+    } else {
+      alert("Please enter a username");
+    }
+  };
 
   if (!joined) {
     return (
@@ -18,15 +25,14 @@ function App() {
         <input
           type="text"
           placeholder="Enter Username"
+          value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
 
         <br />
         <br />
 
-        <button onClick={() => setJoined(true)}>
-          Join
-        </button>
+        <button onClick={joinChat}>Join</button>
       </div>
     );
   }
