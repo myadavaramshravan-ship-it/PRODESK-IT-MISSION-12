@@ -14,8 +14,9 @@ const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
     origin: [
+      "https://prodesk-it-mission-12.vercel.app",
       "http://localhost:5173",
-      "http://localhost:5174",
+      "http://localhost:5174"
     ],
     methods: ["GET", "POST"],
   },
