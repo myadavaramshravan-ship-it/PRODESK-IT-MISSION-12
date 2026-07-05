@@ -2,7 +2,9 @@ import { useState } from "react";
 import { io } from "socket.io-client";
 import Chat from "./Chat";
 
-const socket = io("http://localhost:5000");
+import { io } from "socket.io-client";
+
+const socket = io("https://prodesk-it-mission-12.onrender.com");
 
 function App() {
   const [username, setUsername] = useState("");
